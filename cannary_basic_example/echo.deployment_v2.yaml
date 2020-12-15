@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-deployment-v2 #name of the deployment
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: echo-pod #engine will try to mach this selector with template.metadata.labes.app
+  template:
+    metadata:
+      labels:
+        app: echo-pod #test
+    spec:
+      containers:
+      - name: xxx 
+        image: rushantha/python-echo:5
+        ports:
+        - containerPort: 8080
