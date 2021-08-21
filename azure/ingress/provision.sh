@@ -79,7 +79,7 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
 
 
 echo "Creating ingress..."
-kubectl apply -f ingress.yaml
+kubectl apply -f ingress.yaml --namespace ib
 
 echo "Deploying the services ..."
-kubectl apply -f basic.yaml
+kubectl apply -f basic.yaml --namespace ib

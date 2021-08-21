@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld-one
-        image: rushantha/python-echo:3
+        image: rushantha/python-echo:4
         ports:
         - containerPort: 8080
         env:
