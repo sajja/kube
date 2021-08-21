@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-deployment #name of the deployment
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: echo-pod #engine will try to mach this selector with template.metadata.labes.app
+  template:
+    metadata:
+      labels:
+        app: echo-pod #test
+    spec:
+      containers:
+      - name: echoserver1 #does not really matter (AFAIK :D)
+        image: rushantha/python-cannary:2
+        ports:
+        - containerPort: 8080                            
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-service
+spec:
+  selector:
+    app: echo-pod #should point to pod name 
+  ports:
+    - protocol: TCP
+      port: 8080
+## Azure LB is by default configured and its backend pool is set to kube nodes
+  type: LoadBalancer
+
